@@ -58,29 +58,92 @@ def moving_average():
         city_temp = pd.DataFrame(df, columns = ['year', 'city', 'country', 'avg_temp'])
 
         city_temp = city_temp[city_temp['city'] == user_city]
+        
+        print("\nWould you like to see the 7, 10, or 15-yr temp rolling average for your city as compared to global temps?")
+        print("Please type '7', '10', '15', or 'all'")
+        rolling_average_inputs = ["7", "10", "15" , "all"]
+        
+        type_selection = input().strip().lower()
+        
+        while type_selection not in rolling_average_inputs:
+            print("\nPlease make a valid selection. '7', '10', '15', or 'all' \n")
+            type_selection = input().strip().lower()
 
         city_temp['7-yr MA'] = city_temp.avg_temp.rolling(7).mean()
         city_temp['10-yr MA'] = city_temp.avg_temp.rolling(10).mean()
         city_temp['15-yr MA'] = city_temp.avg_temp.rolling(15).mean()
+        city_temp['Global 7-yr MA'] = city_temp.avg_temp.1.rolling(7).mean()
+        city_temp['Global 10-yr MA'] = city_temp.avg_temp.1.rolling(10).mean()
+        city_temp['Global 15-yr MA'] = city_temp.avg_temp.1.rolling(15).mean()
         #avg_temp_global = pd.DataFrame(df, columns = ['year', 'country', 'avg_temp.1'])
 
         #create plot for moving averages here
         plt.figure(figsize = (12,5))
+        
+        if type_selection == 'all':
 
-        sns.lineplot( x = 'year',
-             y = '7-yr MA',
-             data = city_temp,
-             label = 'Average Temperature - 7-yr Moving Average')
+            sns.lineplot( x = 'year',
+                 y = '7-yr MA',
+                 data = city_temp,
+                 label = 'Average Temperature - 7-yr Moving Average')
 
-        sns.lineplot( x = 'year',
-             y = '10-yr MA',
-             data = city_temp,
-             label = 'Average Temperature - 10-yr Moving Average')
+            sns.lineplot( x = 'year',
+                 y = '10-yr MA',
+                 data = city_temp,
+                 label = 'Average Temperature - 10-yr Moving Average')
 
-        sns.lineplot( x = 'year',
-             y = '15-yr MA',
-             data = city_temp,
-             label = 'Average Temperature - 15-yr Moving Average')
+            sns.lineplot( x = 'year',
+                 y = '15-yr MA',
+                 data = city_temp,
+                 label = 'Average Temperature - 15-yr Moving Average')
+            
+            sns.lineplot( x = 'year',
+                y = 'Global 7-yr MA',
+                data = city_temp,
+                label = 'Average Global Temperature - 7-yr Moving Average')
+
+            sns.lineplot( x = 'year',
+                y = 'Global 10-yr MA',
+                data = city_temp,
+                label = 'Average Global Temperature - 10-yr Moving Average')
+
+            sns.lineplot( x = 'year',
+                y = 'Global 15-yr MA',
+                data = city_temp,
+                label = 'Average Global Temperature - 15-yr Moving Average')
+            
+        elif type_selection == '7':
+            sns.lineplot( x = 'year',
+                y = '7-yr MA',
+                data = city_temp,
+                label = 'Average Temperature - 7-yr Moving Average')
+            
+            sns.lineplot( x = 'year',
+                y = 'Global 7-yr MA',
+                data = city_temp,
+                label = 'Average Global Temperature - 7-yr Moving Average')
+        
+        elif type_selection == '10':
+            sns.lineplot( x = 'year',
+                y = '10-yr MA',
+                data = city_temp,
+                label = 'Average Temperature - 10-yr Moving Average')
+            
+            sns.lineplot( x = 'year',
+                y = 'Global 10-yr MA',
+                data = city_temp,
+                label = 'Average Global Temperature - 10-yr Moving Average')
+            
+        elif type_selection == '15':
+            sns.lineplot( x = 'year',
+                y = '15-yr MA',
+                data = city_temp,
+                label = 'Average Temperature - 15-yr Moving Average')
+            
+            sns.lineplot( x = 'year',
+                y = 'Global 15-yr MA',
+                data = city_temp,
+                label = 'Average Global Temperature - 15-yr Moving Average')
   
         plt.xlabel('Years')
         length = len(city_temp['year'])
