@@ -55,7 +55,7 @@ def moving_average():
 
         print("\nYou have selected {0}".format(user_city))
 
-        city_temp = pd.DataFrame(df, columns = ['year', 'city', 'country', 'avg_temp'])
+        city_temp = pd.DataFrame(df, columns = ['year', 'city', 'country', 'avg_temp', 'avg_global_temp'])
 
         city_temp = city_temp[city_temp['city'] == user_city]
         
@@ -72,9 +72,9 @@ def moving_average():
         city_temp['7-yr MA'] = city_temp.avg_temp.rolling(7).mean()
         city_temp['10-yr MA'] = city_temp.avg_temp.rolling(10).mean()
         city_temp['15-yr MA'] = city_temp.avg_temp.rolling(15).mean()
-        city_temp['Global 7-yr MA'] = city_temp.avg_temp.1.rolling(7).mean()
-        city_temp['Global 10-yr MA'] = city_temp.avg_temp.1.rolling(10).mean()
-        city_temp['Global 15-yr MA'] = city_temp.avg_temp.1.rolling(15).mean()
+        city_temp['Global 7-yr MA'] = city_temp.avg_global_temp.rolling(7).mean()
+        city_temp['Global 10-yr MA'] = city_temp.avg_global_temp.rolling(10).mean()
+        city_temp['Global 15-yr MA'] = city_temp.avg_global_temp.rolling(15).mean()
         #avg_temp_global = pd.DataFrame(df, columns = ['year', 'country', 'avg_temp.1'])
 
         #create plot for moving averages here
@@ -161,9 +161,9 @@ def moving_average():
 
         plt.xticks(lab)
   
-        plt.ylabel('Average Temperature')
+        plt.ylabel('Average Temperature (C)')
 
-        plt.title("{} Average Temperatures".format(user_city))
+        plt.title("{} Average Temperatures vs Global Average Temperatures".format(user_city))
 
         print("\nPlease be patient while I gather your data...\n")
 
@@ -184,4 +184,3 @@ def moving_average():
             time.sleep(3)
 
 moving_average()
-
