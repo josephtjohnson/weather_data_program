@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>7cc9609a-2ef0-4fb3-9582-526af21a5b67</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>WeatherData.py</StartupFile>
+    <StartupFile>weatherdata.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="WeatherData.py" />
+    <Compile Include="averages.py" />
+    <Compile Include="buildplot.py" />
+    <Compile Include="helper.py" />
+    <Compile Include="weatherdata.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
